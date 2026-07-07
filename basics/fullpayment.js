@@ -13,7 +13,7 @@ class Payment extends Wallet {
 
     pay() {
         if (this.amount > this.balance) {
-            throw new PaymentError("Insufficient balance", "INSUFFICIENT_BALANCE");
+            throw new PaymentError("Insufficient balance", "INSUFFICIENT_BALANCE",401);
         }
 
         this.balance -= this.amount;
@@ -40,7 +40,7 @@ class PaymentError extends Error {
 
 function paymentController() {
     try {
-        const p = new Payment("prashant", 6000);
+        const p = new Payment("prashant", 4000);
         const result = p.pay();
 
         return {
